@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AdonisJS - A fully featured web framework for Node.js</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    @if(error)
+    <style>
+    input {
+      border: 1px solid #dc3545;
+    }
+    </style>
+    @end
+  </head>
+
+  <body>
+    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+      <form action="/signup" method="post">
+        <!-- username input -->
+        <div class="form-outline mb-4">
+            <div class="d-flex flex-column align-items-center">
+              <img id="output" src="/images/makeaphone.png" class="rounded-circle img-thumbnail mb-3" style="width: 150px; height: 150px;">
+            </div>
+            <label for="formFile" class="form-label">Photo de profil</label>
+            <input class="form-control" name="profile_image" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+        </div>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" for="name">Nom d'utilisateur (prenom + nom)</label>
+          <input
+            type="name"
+            name="username"
+            id="name"
+            class="form-control {{error ? 'border border-2 border-danger' : ''}}"
+          >
+        </div>
+
+        <select class="form-select mb-4" aria-label="Default select example" name="classe">
+          <option selected>Classe</option>
+          <option value="2B">Seconde B</option>
+          <option value="4B">Quatrième B</option>
+          <option value="5B">Cinquième B</option>
+        </select>
+
+        <div class="form-outline mb-4">
+          <label class="form-label" for="name">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="form-control {{error ? 'border border-2 border-danger' : ''}}"
+          >
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="pwd">Mot de passe</label>
+          <input
+            type="password"
+            name="password"
+            id="pwd"
+            class="form-control {{error ? 'border border-2 border-danger' : ''}}"
+          >
+        </div>
+
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="remember" name="rememberMe">
+          <label class="form-check-label" for="remember">
+            Se rappeler de moi
+          </label>
+        </div>
+
+        @if(error)
+        <div><label class="btn btn-danger px-5 mb-3" style="width: 324px;">Le nom d'utilisateur ou le mot de passe est incorrect.</label></div>
+        @end
+
+        <!-- Submit button -->
+        <div class="d-flex flex-column justify-content-center align-items-center">
+        <button type="submit" class="btn btn-primary btn-block mb-4">
+          S'inscrire
+        </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
